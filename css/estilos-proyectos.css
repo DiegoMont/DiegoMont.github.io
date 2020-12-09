@@ -9,13 +9,8 @@ section {
 h1 {
   font-size: 1.3rem;
   text-align: left;
+  margin-left: 0;
   margin-bottom: 1rem;
-}
-
-li {
-  list-style: '- ' outside;
-  margin-bottom: 0.4rem;
-  margin-left: 1.2rem;
 }
 
 p {
@@ -35,11 +30,12 @@ span {
   overflow: hidden;
   width: 90%;
   border-radius: 2px;
-  margin: 1.5rem auto;
+  margin: 4rem auto;
 }
 
 .project-img {
   background-size: cover;
+  min-height: 300px;
 }
 
 .project-details {
@@ -48,6 +44,37 @@ span {
   padding: 2rem 1.5rem;
 }
 
+.links .btn {
+  padding: 0.8rem 2rem;
+  border: 2px solid var(--blanco-texto);
+  border-radius: 0.5rem;
+  margin-top: 0.8rem;
+}
+
+.links .btn:hover {
+  color: var(--azul-nav);
+  background-color: var(--blanco-texto);
+}
+
 #granito-de-arena .project-img {
-  background-image: url('../img/granito-de-arena.jpg');
+  background-image: url(../img/granito-de-arena.jpg);
+}
+
+#scouting-app .project-img {
+  background-image: url(../img/scouting-app.jpg);
+  background-position: center top;
+}
+
+@media screen and (max-width: 970px) {
+  .project-img, .project-details {
+    width: 100%;
+  }
+
+  .card {
+    width: 100%;
+  }
+
+  .project-img {
+    height: 25vh;
+  }
 }

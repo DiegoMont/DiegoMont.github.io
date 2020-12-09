@@ -31,10 +31,22 @@
   color: #fff;
 }
 
+li {
+  list-style: '- ' outside;
+  margin-bottom: 0.4rem;
+  margin-left: 1.2rem;
+}
+
 nav {
   background-color: var(--azul-nav);
   position: fixed;
   width: 100vw;
+}
+
+ul {
+  display: block;
+  max-width: 35rem;
+  margin: 0 auto;
 }
 
 nav a {
