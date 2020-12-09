@@ -1,0 +1,53 @@
+p, li {
+  font-weight: 300;
+}
+
+section {
+  background-color: var(--azul-claro);
+}
+
+h1 {
+  font-size: 1.3rem;
+  text-align: left;
+  margin-bottom: 1rem;
+}
+
+li {
+  list-style: '- ' outside;
+  margin-bottom: 0.4rem;
+  margin-left: 1.2rem;
+}
+
+p {
+  margin: 0.75rem 0;
+}
+
+span {
+  font-weight: 700;
+}
+
+.project-img, .project-details {
+  width: 50%;
+}
+
+.card {
+  align-items: stretch;
+  overflow: hidden;
+  width: 90%;
+  border-radius: 2px;
+  margin: 1.5rem auto;
+}
+
+.project-img {
+  background-size: cover;
+}
+
+.project-details {
+  background-color: var(--azul-nav);
+  box-sizing: border-box;
+  padding: 2rem 1.5rem;
+}
+
+#granito-de-arena .project-img {
+  background-image: url('../img/granito-de-arena.jpg');
+}

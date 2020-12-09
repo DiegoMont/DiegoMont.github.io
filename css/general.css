@@ -1,0 +1,53 @@
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  src: url(fonts/JetBrainsMono-Light.ttf)
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  src: url(fonts/JetBrainsMono-Regular.ttf)
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 700;
+  src: url(fonts/JetBrainsMono-SemiBold.ttf)
+}
+
+:root {
+  --azul-fondo: #010920;
+  --azul-nav: #012154;
+  --azul-obscuro: #01488a;
+  --azul-claro: #017dbd;
+}
+
+* {
+  font-family: 'JetBrains Mono', Helvetica, Arial, sans-serif;
+  color: #fff;
+}
+
+nav {
+  background-color: var(--azul-nav);
+  position: fixed;
+  width: 100vw;
+}
+
+nav a {
+  padding: 0.5rem 2rem;
+  margin: 0.8rem 1rem;
+  border: 3px solid var(--azul-nav);
+  border-radius: 0.5rem;
+}
+
+nav a:hover {
+  border-color: #fff;
+}
+
+footer {
+  background-color: var(--azul-fondo);
+}
