@@ -63,3 +63,8 @@ nav a:hover {
 footer {
   background-color: var(--azul-fondo);
 }
+
+
+#pagina-actual {
+  text-decoration: underline;
+}
