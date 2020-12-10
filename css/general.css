@@ -28,7 +28,7 @@
 
 * {
   font-family: 'JetBrains Mono', Helvetica, Arial, sans-serif;
-  color: #fff;
+  color: var(--blanco-texto);
 }
 
 li {

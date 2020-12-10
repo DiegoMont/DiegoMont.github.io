@@ -176,6 +176,10 @@ button, .btn {
   opacity: 1;
 }
 
+a.firma, span.firma {
+  color: #ddd;
+}
+
 a.firma {
   font-family: 'Roboto Slab', serif !important;
   font-size: 0.75rem !important;

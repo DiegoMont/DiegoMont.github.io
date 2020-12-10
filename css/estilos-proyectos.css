@@ -9,12 +9,11 @@ section {
 h1 {
   font-size: 1.3rem;
   text-align: left;
-  margin-left: 0;
   margin-bottom: 1rem;
 }
 
 p {
-  margin: 0.75rem 0;
+  margin: 0.75rem auto;
 }
 
 span {
@@ -65,13 +64,32 @@ span {
   background-position: center top;
 }
 
+#ge-healthcare .project-img {
+  background-image: url(../img/ge-healthcare.jpg);
+  background-position: center top;
+}
+
+#club-programacion .project-img {
+  background-image: url(../img/club-programacion.jpg);
+  background-position: 15% top;
+}
+
+#programacion-first .project-img {
+  background-image: url(../img/ftc-programming.jpg);
+}
+
+#la-conquista .project-img {
+  background-image: url(../img/la-conquista.jpg);
+  background-position: center;
+}
+
 @media screen and (max-width: 970px) {
   .project-img, .project-details {
     width: 100%;
   }
 
   .card {
-    width: 100%;
+    width: 90%;
   }
 
   .project-img {
