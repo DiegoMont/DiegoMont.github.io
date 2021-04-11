@@ -28,15 +28,14 @@
 
 const startRecording = (stream) => {
   log__("tenemos el microfono");
+  const mime = getSupportedMIME();
   let options = {
     audioBitsPerSecond : 128000,
     mimeType : 'audio/webm'
   }
-  if(MediaRecorder.isTypeSupported('audio/mp4')){
-    options.mimeType = 'audio/mp4';
-  }
+  options.mimeType = mime;
   const chunks = [];
-  const mediaRecorder = new MediaRecorder(stream);
+  const mediaRecorder = new MediaRecorder(stream, options);
 
   let isRecording = false;
 
@@ -67,10 +66,23 @@ const startRecording = (stream) => {
 };
 
 const saveVoiceNote = (chunks) => {
-  let fileBlob = new Blob(chunks);
+  let options = {
+    type : ''
+  }
+  options.type = getSupportedMIME();
+  let fileBlob = new Blob(chunks, options);
+  
   const audioURL = URL.createObjectURL(fileBlob);
   player.src = audioURL;
   //console.log('Archivo guardado');
+};
+
+const getSupportedMIME = () => {
+  if(MediaRecorder.isTypeSupported('audio/mp4')){
+    return 'audio/mp4';
+  } else {
+    return 'audio/webm';
+  }
 };
 
 btnRecord.onclick = getMicrophone;
