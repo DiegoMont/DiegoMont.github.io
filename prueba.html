@@ -9,22 +9,34 @@
   <button type="button" id="grabar">Grabar</button>
   <button id="detener" class="ocultar" type="button">Detener</button>
   <audio id="player" class="ocultar" controls></audio>
+  <p id="log"></p>
   <script>
     const btnRecord = document.getElementById('grabar');
     const btnStopRecord = document.getElementById('detener');
     const player = document.getElementById('player');
+    const log = document.getElementById('log');
+
+    const log__ = (texto) => {
+      log.innerText += texto + "<br>";
+    };
 
     const getMicrophone = () => {
-  navigator.mediaDevices.getUserMedia({ audio: true, video: false }).then(startRecording);
+  navigator.mediaDevices.getUserMedia({ audio: true, video: false }).then(startRecording).catch(() => {
+    log__("no se pudo conseguir el microfono");
+  });
 };
 
 const startRecording = (stream) => {
-  const options = {
+  log__("tenemos el microfono");
+  let options = {
     audioBitsPerSecond : 128000,
     mimeType : 'audio/webm'
   }
+  if(MediaRecorder.isTypeSupported('audio/mp4')){
+    options.mimeType = 'audio/mp4';
+  }
   const chunks = [];
-  const mediaRecorder = new MediaRecorder(stream, options);
+  const mediaRecorder = new MediaRecorder(stream);
 
   let isRecording = false;
 
