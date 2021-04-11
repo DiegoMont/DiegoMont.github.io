@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button type="button" id="grabar">Grabar</button>
+  <button id="detener" class="ocultar" type="button">Detener</button>
+  <audio id="player" class="ocultar" controls></audio>
+  <script>
+    const btnRecord = document.getElementById('grabar');
+    const btnStopRecord = document.getElementById('detener');
+    const player = document.getElementById('player');
+
+    const getMicrophone = () => {
+  navigator.mediaDevices.getUserMedia({ audio: true, video: false }).then(startRecording);
+};
+
+const startRecording = (stream) => {
+  const options = {
+    audioBitsPerSecond : 128000,
+    mimeType : 'audio/webm'
+  }
+  const chunks = [];
+  const mediaRecorder = new MediaRecorder(stream, options);
+
+  let isRecording = false;
+
+  mediaRecorder.addEventListener('dataavailable', (e) => {
+    if(e.data.size > 0){
+      chunks.push(e.data);
+    }
+  });
+
+  mediaRecorder.addEventListener('stop', () => {
+    isRecording = false;
+    saveVoiceNote(chunks);
+    //console.log('Grabacion detenida');
+  });
+
+  btnStopRecord.onclick = () => {
+    mediaRecorder.stop();
+  };
+
+  setInterval(() => {
+    if(isRecording)
+      mediaRecorder.stop();
+  },60000);
+
+  mediaRecorder.start();
+  //console.log('Comenzó la grabación');
+  isRecording = true;
+};
+
+const saveVoiceNote = (chunks) => {
+  let fileBlob = new Blob(chunks);
+  const audioURL = URL.createObjectURL(fileBlob);
+  player.src = audioURL;
+  //console.log('Archivo guardado');
+};
+
+btnRecord.onclick = getMicrophone;
+  </script>
+</body>
+</html>
