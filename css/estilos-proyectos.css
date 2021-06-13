@@ -65,6 +65,11 @@ span {
   background-position: center center;
 }
 
+#we-want .project-img {
+  background-image: url(../img/we-want.jpg);
+  background-position: center center;
+}
+
 #scouting-app .project-img {
   background-image: url(../img/scouting-app.jpg);
   background-position: center top;
