@@ -51,13 +51,11 @@ ul {
 
 nav a {
   padding: 0.5rem 2rem;
-  margin: 0.8rem 1rem;
-  border: 3px solid var(--azul-nav);
-  border-radius: 0.5rem;
+  margin: 0 1rem;
 }
 
 nav a:hover {
-  border-color: #fff;
+  background-color: var(--azul-fondo);
 }
 
 footer {
