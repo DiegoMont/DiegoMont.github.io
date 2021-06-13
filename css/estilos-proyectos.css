@@ -60,6 +60,11 @@ span {
   background-image: url(../img/granito-de-arena.jpg);
 }
 
+#mensajes-esperanza .project-img {
+  background-image: url(../img/mensajes-esperanza.jpg);
+  background-position: center top;
+}
+
 #liverpool-qr .project-img {
   background-image: url(../img/liverpool-qr.jpg);
   background-position: center center;
