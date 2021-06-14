@@ -7,7 +7,7 @@ h1 {
   justify-content: center;
 }
 
-a img {
+.contact-info a img {
   width: 2rem;
   margin: 1rem;
 }
@@ -29,6 +29,41 @@ h2 {
   color: var(--azul-nav);
   text-align: left;
   margin: 2rem auto 0.5rem;
+}
+
+.project-card {
+  align-self: stretch;
+  width: 40%;
+  min-width: 270px;
+  margin: 2rem 0;
+}
+
+.project-card h3 {
+  font-size: 1.4rem;
+  font-weight: 500;
+  padding-bottom: 0.5rem;
+}
+
+.project-card:hover h3, .project-card:hover a {
+  background-color: var(--azul-obscuro);
+}
+
+#btn-portfolio {
+  font-weight: 700;
+  background-color: var(--azul-obscuro);
+  width: 30%;
+  margin: 2rem auto 0;
+  padding: 1rem 2rem;
+}
+
+@media screen and (max-width: 640px) {
+  #btn-portfolio, .project-card {
+    width: 92%;
+  }
+}
+
+#cartas {
+  background-color: var(--azul-fondo);
 }
 
 #proyectos {
