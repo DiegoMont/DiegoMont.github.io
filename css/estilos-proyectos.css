@@ -75,6 +75,11 @@ span {
   background-position: center center;
 }
 
+#nautilus-website .project-img {
+  background-image: url(../img/nautilus-web.jpg);
+  background-position: center top;
+}
+
 #scouting-app .project-img {
   background-image: url(../img/scouting-app.jpg);
   background-position: center top;
