@@ -1,0 +1,22 @@
+h1 {
+    font-family: serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+
+nav button {
+    color: var(--primary-color);
+    background-color: var(--accent-color);
+    flex-grow: 1;
+    padding: 0.5rem 1rem;
+    margin: 0 1px;
+}
+
+.audio-tracks button {
+    color: var(--white-text);
+    background-color: var(--primary-color);
+    border-radius: 10px;
+    flex-grow: 1;
+    padding: 0.3rem 0;
+    margin: 2rem 0.2rem 1rem;
+}
