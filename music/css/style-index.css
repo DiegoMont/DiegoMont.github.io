@@ -1,10 +1,27 @@
+audio {
+    margin: 2rem 0;
+}
+
 h1 {
     font-family: serif;
     font-size: 1.5rem;
     font-weight: 400;
 }
 
-nav button {
+h2 {
+    font-size: 1.1rem;
+    text-align: left;
+    max-width: none;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--accent-color);
+    margin: 1.5rem 0 0.5rem;
+}
+
+.piece-content {
+    padding: 0;
+}
+
+.piece-content a {
     color: var(--primary-color);
     background-color: var(--accent-color);
     flex-grow: 1;
@@ -12,11 +29,11 @@ nav button {
     margin: 0 1px;
 }
 
-.audio-tracks button {
+.piece-content button {
     color: var(--white-text);
     background-color: var(--primary-color);
     border-radius: 10px;
     flex-grow: 1;
     padding: 0.3rem 0;
-    margin: 2rem 0.2rem 1rem;
+    margin: 0rem 0.2rem;
 }
