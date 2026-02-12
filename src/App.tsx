@@ -7,7 +7,7 @@ import Portfolio from "./pages/Portfolio"
 const App = () => {
 
     return (
-        <BrowserRouter>
+        <BrowserRouter basename={import.meta.env.BASE_URL}>
             <Routes>
                 <Route path="/" element={ <Portfolio /> }></Route>
                 <Route path="/music" element={ <PracticePage song={songs[0]}/> } />
