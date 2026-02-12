@@ -36,6 +36,42 @@ const sugarPlumFairy: Song = {
     }]
 }
 
-const songs: Song[] = [sugarPlumFairy]
+const bella_ciao: Song = {
+    title: "Bella Ciao",
+    cloudDir: "/bella_ciao",
+    recordings: [{
+        name: "Ensamble",
+        score: "/scoresheets/bella_ciao_four_hands.pdf",
+        speeds: [
+            {name: "50%", audio: "/four_hand_audio/bella_ciao_50.mp3"},
+            {name: "70%", audio: "/four_hand_audio/bella_ciao_70.mp3"},
+            {name: "80%", audio: "/four_hand_audio/bella_ciao_80.mp3"},
+            {name: "90%", audio: "/four_hand_audio/bella_ciao_90.mp3"},
+            {name: "100%", audio: "/four_hand_audio/bella_ciao_100.mp3"},
+        ]
+    }, {
+        name: "Piano 1",
+        score: "/scoresheets/bella_ciao_piano1.pdf",
+        speeds: [
+            {name: "50%", audio: "/piano_1_audio/bella_ciao_50.mp3"},
+            {name: "70%", audio: "/piano_1_audio/bella_ciao_70.mp3"},
+            {name: "80%", audio: "/piano_1_audio/bella_ciao_80.mp3"},
+            {name: "90%", audio: "/piano_1_audio/bella_ciao_90.mp3"},
+            {name: "100%", audio: "/piano_1_audio/bella_ciao_100.mp3"},
+        ]
+    }, {
+        name: "Piano 2",
+        score: "/scoresheets/bella_ciao_piano2.pdf",
+        speeds: [
+            {name: "50%", audio: "/piano_2_audio/bella_ciao_50.mp3"},
+            {name: "70%", audio: "/piano_2_audio/bella_ciao_70.mp3"},
+            {name: "80%", audio: "/piano_2_audio/bella_ciao_80.mp3"},
+            {name: "90%", audio: "/piano_2_audio/bella_ciao_90.mp3"},
+            {name: "100%", audio: "/piano_2_audio/bella_ciao_100.mp3"},
+        ]
+    }]
+}
+
+const songs: Song[] = [bella_ciao, sugarPlumFairy]
 
 export default songs;

@@ -4,7 +4,7 @@ import type Song from '../models/Song'
 import { useState } from 'react'
 import type { MouseEvent } from 'react'
 
-const ASSETS_BASE_URL = "https://objectstorage.mx-queretaro-1.oraclecloud.com/p/GW-e4mhCtfDIEa3tUbAsZqkp6-O1hM12n662wElSNEQ4a1PXT-W-uQ1w56R-_67S/n/axwp3hbp4bpp/b/diegomont-assets/o/music"
+const ASSETS_BASE_URL = "https://objectstorage.mx-queretaro-1.oraclecloud.com/p/CLpG5jCJyRf6lLxwxGIOHx7J1NEpZvU29JMIndd-Ygf0vgOQ_au-alaGts7rvQKg/n/axwp3hbp4bpp/b/diegomont-assets/o/music"
 
 const PracticePage = ({song}: {song: Song}) => {
     const getAudioURL = (audioFile: string) => {
