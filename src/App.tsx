@@ -1,11 +1,17 @@
 import PracticePage from "./pages/PracticePage"
 
 import songs from "./data"
+import { BrowserRouter, Route, Routes } from "react-router"
 
 const App = () => {
 
     return (
-        <PracticePage song={songs[0]}/>
+        <BrowserRouter>
+            <Routes>
+                <Route path="/"></Route>
+                <Route path="/music" element={<PracticePage song={songs[0]}/>} />
+            </Routes>
+        </BrowserRouter>
   )
 }
 
