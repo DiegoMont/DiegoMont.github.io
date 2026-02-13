@@ -11,6 +11,7 @@ const App = () => {
             <Routes>
                 <Route path="/" element={ <Portfolio /> }></Route>
                 <Route path="/music" element={ <PracticePage song={songs[0]}/> } />
+                {songs.map(song => <Route key={song.urlPath} path={`/music/${song.urlPath}`} element={ <PracticePage song={song}/> } />)}
             </Routes>
         </HashRouter>
   )

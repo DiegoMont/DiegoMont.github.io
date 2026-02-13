@@ -2,6 +2,7 @@ import type Song from "./models/Song";
 
 const sugarPlumFairy: Song = {
     title: "Dance of the Sugar Plum Fairy",
+    urlPath: "the-nutcracker",
     cloudDir: "/dance_sugar_plum_fairy",
     recordings: [{
         name: "Ensamble",
@@ -38,6 +39,7 @@ const sugarPlumFairy: Song = {
 
 const bella_ciao: Song = {
     title: "Bella Ciao",
+    urlPath: "bella-ciao",
     cloudDir: "/bella_ciao",
     recordings: [{
         name: "Ensamble",
