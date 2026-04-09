@@ -1,6 +1,6 @@
 import { Box, Button, CloseButton, Drawer, Flex, Portal, Text, VStack } from "@chakra-ui/react"
 
-import songs from "../data"
+import songs from "../data/songs"
 import { Link } from "react-router"
 
 const SongPicker = () => {

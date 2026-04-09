@@ -1,6 +1,6 @@
 import PracticePage from "./pages/PracticePage"
 
-import songs from "./data"
+import songs from "./data/songs"
 import { HashRouter, Route, Routes } from "react-router"
 import Portfolio from "./pages/Portfolio"
 import HousePage from "./pages/HousePage"
