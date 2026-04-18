@@ -1,8 +1,10 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Box } from '@chakra-ui/react'
 import maplibregl from 'maplibre-gl'
 import 'maplibre-gl/dist/maplibre-gl.css'
 import transportData from '../data/transport_stations.json'
+import type Estate from '../models/Estate'
+import { fetchEstates } from '../services/EstateService'
 
 const SOURCE_ID = 'transport-stations'
 const MB_ICON_ID = 'transport-marker-mb'
@@ -13,6 +15,15 @@ const LABEL_LAYER_ID = 'transport-stations-labels'
 
 const HousePage = () => {
     const containerRef = useRef<HTMLDivElement>(null)
+    const [estates, setEstates] = useState<Estate[]>([])
+
+    useEffect(() => {
+        const endpoint = import.meta.env.VITE_ESTATE_API_URL
+        fetchEstates(endpoint).then((parsedEstates: Estate[]) => {
+            console.log(parsedEstates)
+            setEstates(parsedEstates)
+        })
+    }, [])
 
     const createMarkerImage = (shape: 'circle' | 'square', size: number) => {
         const canvas = document.createElement('canvas')
