@@ -43,6 +43,7 @@ type EstateFeature = {
     bathrooms: number
     parking_cars: number
     images: string[]
+    source_url: string
   }
 }
 
@@ -62,13 +63,14 @@ const mapFeatureToEstate = (feature: EstateFeature): Estate | null => {
     const bathrooms = toNumber(properties.bathrooms)
     const parkingCars = toNumber(properties.parking_cars)
     const images = toStringArray(properties.images)
+    const url = toStringValue(properties.source_url)
 
     if (id === null || name === null || type === null || price === null || age === null || area === null || bedrooms === null || bathrooms === null || parkingCars === null || images === null || latitude === null || longitude === null) {
         console.warn(`Skipping feature: missing or invalid Estate properties.`)
         return null
     }
 
-    return { id, name, type, price, latitude, longitude, age, area, bedrooms, bathrooms, parking_cars: parkingCars, images }
+    return { id, name, type, price, latitude, longitude, age, area, bedrooms, bathrooms, parking_cars: parkingCars, images, url }
 }
 
 export const fetchEstates = async (endpoint: string): Promise<Estate[]> => {

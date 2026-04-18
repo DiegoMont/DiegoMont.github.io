@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { Box } from '@chakra-ui/react'
+import { Box, Image, Link, Text, VStack } from '@chakra-ui/react'
 import maplibregl from 'maplibre-gl'
 import 'maplibre-gl/dist/maplibre-gl.css'
 import transportData from '../data/transport_stations.json'
@@ -12,15 +12,47 @@ const METRO_ICON_ID = 'transport-marker-metro'
 const MB_LAYER_ID = 'transport-stations-mb'
 const METRO_LAYER_ID = 'transport-stations-metro'
 const LABEL_LAYER_ID = 'transport-stations-labels'
+type SelectedEstate = {
+    id: number
+    name: string
+    price: number
+    area: number
+    image: string
+    url: string | null
+}
+
+const formatCurrency = (value: number) => {
+    return new Intl.NumberFormat('es-MX', {
+        style: 'currency',
+        currency: 'MXN',
+        maximumFractionDigits: 0,
+    }).format(value)
+}
+
+const formatArea = (value: number) => {
+    return `${new Intl.NumberFormat('es-MX').format(value)}`
+}
 
 const HousePage = () => {
     const containerRef = useRef<HTMLDivElement>(null)
+    const mapRef = useRef<maplibregl.Map | null>(null)
+    const estatesRef = useRef<Estate[]>([])
+    const markersRef = useRef<maplibregl.Marker[]>([])
     const [estates, setEstates] = useState<Estate[]>([])
+    const [selectedEstate, setSelectedEstate] = useState<SelectedEstate | null>(null)
+    const [imageLoadError, setImageLoadError] = useState(false)
+
+    useEffect(() => {
+        estatesRef.current = estates
+    }, [estates])
+
+    useEffect(() => {
+        setImageLoadError(false)
+    }, [selectedEstate?.id])
 
     useEffect(() => {
         const endpoint = import.meta.env.VITE_ESTATE_API_URL
         fetchEstates(endpoint).then((parsedEstates: Estate[]) => {
-            console.log(parsedEstates)
             setEstates(parsedEstates)
         })
     }, [])
@@ -59,6 +91,7 @@ const HousePage = () => {
             center: [-99.19675651574234, 19.431733465983427],
             zoom: 12,
         })
+        mapRef.current = map
 
         map.on('load', () => {
             const mbImage = createMarkerImage('circle', 20)
@@ -126,16 +159,127 @@ const HousePage = () => {
                     'text-opacity': ['interpolate', ['linear'], ['zoom'], 13, 0, 14, 1],
                 },
             })
+
+            estatesRef.current.forEach((estate) => {
+                const marker = new maplibregl.Marker()
+                    .setLngLat([estate.longitude, estate.latitude])
+                    .addTo(map)
+
+                marker.getElement().style.cursor = 'pointer'
+                marker.getElement().addEventListener('click', (e) => {
+                    e.stopPropagation()
+                    setSelectedEstate({
+                        id: estate.id,
+                        name: estate.name,
+                        price: estate.price,
+                        area: estate.area,
+                        image: estate.images[0] ?? '',
+                        url: estate.url,
+                    })
+                })
+
+                markersRef.current.push(marker)
+            })
         })
 
+        const handleMapClick = () => {
+            setSelectedEstate(null)
+        }
+
+        map.on('click', handleMapClick)
+
         return () => {
+            map.off('click', handleMapClick)
+            markersRef.current.forEach((marker) => marker.remove())
+            markersRef.current = []
             map.remove()
+            mapRef.current = null
         }
     }, [])
 
+    useEffect(() => {
+        const map = mapRef.current
+        if (!map) return
+
+        markersRef.current.forEach((marker) => marker.remove())
+        markersRef.current = []
+
+        estates.forEach((estate) => {
+            const marker = new maplibregl.Marker()
+                .setLngLat([estate.longitude, estate.latitude])
+                .addTo(map)
+
+            marker.getElement().style.cursor = 'pointer'
+            marker.getElement().addEventListener('click', (e) => {
+                e.stopPropagation()
+                setSelectedEstate({
+                    id: estate.id,
+                    name: estate.name,
+                    price: estate.price,
+                    area: estate.area,
+                    image: estate.images[0] ?? '',
+                    url: estate.url,
+                })
+            })
+
+            markersRef.current.push(marker)
+        })
+    }, [estates])
+
     return (
-        <Box>
-            <Box ref={containerRef} width="100vw" height="100vh"/>
+        <Box position="relative" width="100vw" height="100vh">
+            <Box ref={containerRef} width="100%" height="100%"/>
+            {selectedEstate && (
+                <Box
+                    position="absolute"
+                    top="4"
+                    right="4"
+                    bg="white"
+                    borderRadius="md"
+                    boxShadow="lg"
+                    borderWidth="1px"
+                    borderColor="gray.200"
+                    p="4"
+                    width={{ base: '84vw', sm: '320px' }}
+                    zIndex={2}
+                >
+                    <VStack align="stretch" gap="3">
+                        {selectedEstate.url ? (
+                            <Link href={selectedEstate.url} target="_blank">
+                                <Text fontWeight="bold" fontSize="lg" color="gray.800">{selectedEstate.name}</Text>
+                            </Link>
+                        ) : (
+                            <Text fontWeight="bold" fontSize="lg" color="gray.800">{selectedEstate.name}</Text>
+                        )}
+                        {!imageLoadError && selectedEstate.image ? (
+                            <Image
+                                src={selectedEstate.image}
+                                alt={selectedEstate.name}
+                                borderRadius="md"
+                                width="100%"
+                                height="170px"
+                                objectFit="cover"
+                                onError={() => setImageLoadError(true)}
+                            />
+                        ) : (
+                            <Box
+                                borderRadius="md"
+                                borderWidth="1px"
+                                borderColor="gray.200"
+                                height="170px"
+                                display="flex"
+                                alignItems="center"
+                                justifyContent="center"
+                                bg="gray.50"
+                            >
+                                <Text color="gray.500" fontSize="sm">Sin imagen disponible</Text>
+                            </Box>
+                        )}
+                        <Text color="gray.800"><Text as="span" fontWeight="semibold">Precio: </Text>{formatCurrency(selectedEstate.price)}</Text>
+                        <Text color="gray.800"><Text as="span" fontWeight="semibold">Área: </Text>{formatArea(selectedEstate.area)}m<sup>2</sup></Text>
+                    </VStack>
+                </Box>
+            )}
         </Box>
     )
 }

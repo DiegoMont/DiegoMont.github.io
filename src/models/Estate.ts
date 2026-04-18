@@ -11,4 +11,5 @@ export default interface Estate {
     bathrooms: number;
     parking_cars: number;
     images: string[];
+    url: string | null;
 }
