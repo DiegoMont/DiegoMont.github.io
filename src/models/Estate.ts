@@ -3,6 +3,7 @@ export default interface Estate {
     name: string;
     type: string;
     price: number;
+    status: 'pending' | 'no' | 'maybe' | 'yes';
     latitude: number;
     longitude: number;
     age: number;

@@ -33,6 +33,13 @@ const formatArea = (value: number) => {
     return `${new Intl.NumberFormat('es-MX').format(value)}`
 }
 
+const statusColor: Record<string, string> = {
+    pending: '#3B82F6',
+    yes: '#22C55E',
+    no: '#EF4444',
+    maybe: '#EAB308',
+}
+
 const HousePage = () => {
     const containerRef = useRef<HTMLDivElement>(null)
     const mapRef = useRef<maplibregl.Map | null>(null)
@@ -161,7 +168,7 @@ const HousePage = () => {
             })
 
             estatesRef.current.forEach((estate) => {
-                const marker = new maplibregl.Marker()
+                const marker = new maplibregl.Marker({ color: statusColor[estate.status] })
                     .setLngLat([estate.longitude, estate.latitude])
                     .addTo(map)
 
@@ -205,7 +212,7 @@ const HousePage = () => {
         markersRef.current = []
 
         estates.forEach((estate) => {
-            const marker = new maplibregl.Marker()
+            const marker = new maplibregl.Marker({ color: statusColor[estate.status] })
                 .setLngLat([estate.longitude, estate.latitude])
                 .addTo(map)
 

@@ -37,6 +37,7 @@ type EstateFeature = {
     name: string
     estate_type: string
     price: number
+    status: string
     age: number
     area: number
     bedrooms: number
@@ -56,6 +57,7 @@ const mapFeatureToEstate = (feature: EstateFeature): Estate | null => {
     const id = toNumber(properties.id)
     const name = toStringValue(properties.name)
     const type = toStringValue(properties.estate_type)
+    const status = toStringValue(properties.status)
     const price = toNumber(properties.price)
     const age = toNumber(properties.age) || 0
     const area = toNumber(properties.area)
@@ -65,12 +67,14 @@ const mapFeatureToEstate = (feature: EstateFeature): Estate | null => {
     const images = toStringArray(properties.images)
     const url = toStringValue(properties.source_url)
 
-    if (id === null || name === null || type === null || price === null || age === null || area === null || bedrooms === null || bathrooms === null || parkingCars === null || images === null || latitude === null || longitude === null) {
+    if (id === null || name === null || type === null || price === null || age === null || area === null || bedrooms === null || bathrooms === null || parkingCars === null || images === null || latitude === null || longitude === null || status === null) {
         console.warn(`Skipping feature: missing or invalid Estate properties.`)
         return null
     }
 
-    return { id, name, type, price, latitude, longitude, age, area, bedrooms, bathrooms, parking_cars: parkingCars, images, url }
+    const resolvedStatus: Estate['status'] = status === 'yes' || status === 'maybe' || status === 'no' ? status : 'pending';
+
+    return { id, name, type, price, status: resolvedStatus, latitude, longitude, age, area, bedrooms, bathrooms, parking_cars: parkingCars, images, url }
 }
 
 export const fetchEstates = async (endpoint: string): Promise<Estate[]> => {
