@@ -1,4 +1,5 @@
 import PracticePage from "./pages/PracticePage"
+import PasswordPage from "./pages/PasswordPage"
 
 import songs from "./data/songs"
 import { HashRouter, Route, Routes, useLocation } from "react-router"
@@ -20,6 +21,11 @@ const RouteTitleManager = () => {
             return
         }
 
+        if (pathname === "/password") {
+            document.title = "Password Generator"
+            return
+        }
+
         document.title = "DiegoMont"
     }, [pathname])
 
@@ -35,6 +41,7 @@ const App = () => {
                 <Route path="/" element={ <Portfolio /> }></Route>
                 <Route path="/house" element={ <HousePage /> } />
                 <Route path="/music" element={ <PracticePage song={songs[0]}/> } />
+                <Route path="/password" element={ <PasswordPage /> } />
                 {songs.map(song => <Route key={song.urlPath} path={`/music/${song.urlPath}`} element={ <PracticePage song={song}/> } />)}
             </Routes>
         </HashRouter>
