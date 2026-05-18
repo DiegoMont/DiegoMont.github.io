@@ -41,20 +41,34 @@ const PasswordPage = () => {
             return
         }
 
+        const requiredCharactersCount = Number(includeNumbers) + Number(includeUppercase) +
+                                        Number(includeLowercase) + Number(includeSpecialCharacter)
+        if (stringLength < requiredCharactersCount) {
+            setErrorMessage("Length of each string is too short for the selected character requirements.")
+            return
+        }
+
         setErrorMessage("")
 
         const generatedPasswords = Array.from({ length: stringCount }, () => {
-            let password = ""
-            for (let i = 0; i < stringLength; i += 1) {
-                password += getRandomChar(characterPool)
+            let password = []
+            if (includeNumbers) {
+                password.push(getRandomChar(NUMERIC_DIGITS))
+            }
+            if (includeUppercase) {
+                password.push(getRandomChar(UPPERCASE_LETTERS))
+            }
+            if (includeLowercase) {
+                password.push(getRandomChar(LOWERCASE_LETTERS))
             }
             if (includeSpecialCharacter) {
-                const replaceIndex = Math.floor(Math.random() * password.length)
-                const passwordChars = password.split("")
-                passwordChars[replaceIndex] = getRandomChar(SPECIAL_CHARACTERS)
-                password = passwordChars.join("")
+                password.push(getRandomChar(SPECIAL_CHARACTERS))
             }
-            return password
+            for (let i = 0; i < stringLength; i += 1) {
+                password.push(getRandomChar(characterPool))
+            }
+            shuffleCharacters(password)
+            return password.join("")
         })
 
         setPasswords(generatedPasswords)
@@ -63,6 +77,15 @@ const PasswordPage = () => {
     const getRandomChar = (source: string) => {
         const randomIndex = Math.floor(Math.random() * source.length)
         return source[randomIndex]
+    }
+
+    const shuffleCharacters = (characters: string[]) => {
+        for (let i = characters.length - 1; i > 0; i -= 1) {
+            const swapIndex = Math.floor(Math.random() * (i + 1))
+            const temp = characters[i]
+            characters[i] = characters[swapIndex]
+            characters[swapIndex] = temp
+        }
     }
 
     return (
