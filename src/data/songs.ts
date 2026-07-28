@@ -74,6 +74,43 @@ const bella_ciao: Song = {
     }]
 }
 
-const songs: Song[] = [bella_ciao, sugarPlumFairy]
+const aladdin: Song = {
+    title: "A Whole New World",
+    urlPath: "aladdin",
+    cloudDir: "/aladdin",
+    recordings: [{
+        name: "Ensamble",
+        score: "/scoresheets/a_whole_new_world.pdf",
+        speeds: [
+            {name: "57ppm", audio: "/ensemble/a_whole_new_world_57bpm.mp3"},
+            {name: "80ppm", audio: "/ensemble/a_whole_new_world_80bpm.mp3"},
+            {name: "91ppm", audio: "/ensemble/a_whole_new_world_91bpm.mp3"},
+            {name: "103ppm", audio: "/ensemble/a_whole_new_world_103bpm.mp3"},
+            {name: "114ppm", audio: "/ensemble/a_whole_new_world_114bpm.mp3"},
+        ]
+    }, {
+        name: "Violin",
+        score: "/scoresheets/a_whole_new_world_violin.pdf",
+        speeds: [
+            {name: "57ppm", audio: "/violin/a_whole_new_world_57bpm.mp3"},
+            {name: "80ppm", audio: "/violin/a_whole_new_world_80bpm.mp3"},
+            {name: "91ppm", audio: "/violin/a_whole_new_world_91bpm.mp3"},
+            {name: "103ppm", audio: "/violin/a_whole_new_world_103bpm.mp3"},
+            {name: "114ppm", audio: "/violin/a_whole_new_world_114bpm.mp3"},
+        ]
+    }, {
+        name: "Piano",
+        score: "/scoresheets/a_whole_new_world_piano.pdf",
+        speeds: [
+            {name: "57ppm", audio: "/piano/a_whole_new_world_57bpm.mp3"},
+            {name: "80ppm", audio: "/piano/a_whole_new_world_80bpm.mp3"},
+            {name: "91ppm", audio: "/piano/a_whole_new_world_91bpm.mp3"},
+            {name: "103ppm", audio: "/piano/a_whole_new_world_103bpm.mp3"},
+            {name: "114ppm", audio: "/piano/a_whole_new_world_114bpm.mp3"},
+        ]
+    }]
+}
+
+const songs: Song[] = [aladdin, bella_ciao, sugarPlumFairy]
 
 export default songs;
