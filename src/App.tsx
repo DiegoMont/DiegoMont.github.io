@@ -5,28 +5,24 @@ import songs from "./data/songs"
 import { HashRouter, Route, Routes, useLocation } from "react-router"
 import Portfolio from "./pages/Portfolio"
 import HousePage from "./pages/HousePage"
+import RecipesPage from "./pages/RecipesPage"
+import RecipePage from "./pages/RecipePage"
 import { useEffect } from "react"
 
 const RouteTitleManager = () => {
     const { pathname } = useLocation()
 
     useEffect(() => {
-        if (pathname === "/house") {
+        if (pathname === "/house")
             document.title = "House"
-            return
-        }
-
-        if (pathname.startsWith("/music")) {
+        else if (pathname.startsWith("/music"))
             document.title = "Music"
-            return
-        }
-
-        if (pathname === "/password") {
+        else if (pathname === "/password")
             document.title = "Password Generator"
-            return
-        }
-
-        document.title = "DiegoMont"
+        else if (pathname.startsWith("/recipes"))
+            document.title = "Recipes"
+        else
+            document.title = "DiegoMont"
     }, [pathname])
 
     return null
@@ -42,6 +38,8 @@ const App = () => {
                 <Route path="/house" element={ <HousePage /> } />
                 <Route path="/music" element={ <PracticePage song={songs[0]}/> } />
                 <Route path="/password" element={ <PasswordPage /> } />
+                <Route path="/recetas" element={ <RecipesPage /> } />
+                <Route path="/recetas/:filename" element={ <RecipePage /> } />
                 {songs.map(song => <Route key={song.urlPath} path={`/music/${song.urlPath}`} element={ <PracticePage song={song}/> } />)}
             </Routes>
         </HashRouter>
