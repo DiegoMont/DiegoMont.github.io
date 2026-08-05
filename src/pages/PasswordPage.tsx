@@ -64,7 +64,7 @@ const PasswordPage = () => {
             if (includeSpecialCharacter) {
                 password.push(getRandomChar(SPECIAL_CHARACTERS))
             }
-            for (let i = 0; i < stringLength; i += 1) {
+            for (let i = 0; i < stringLength - requiredCharactersCount; i += 1) {
                 password.push(getRandomChar(characterPool))
             }
             shuffleCharacters(password)
