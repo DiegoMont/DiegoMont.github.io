@@ -27,7 +27,7 @@ const RecipePage = () => {
         <VStack gap="0" align="stretch">
             <Box bg="blue.subtle" py={{ base: "6", md: "10" }} px="4">
                 <Container maxW="breakpoint-lg">
-                    <Heading as="h1" fontFamily="serif" fontWeight="medium" size={{ base: "2xl", md: "5xl" }} textAlign="center" color="blue.contrast">
+                    <Heading as="h1" fontFamily="serif" fontWeight="medium" size={{ base: "3xl", md: "5xl" }} textAlign="center" color="blue.contrast">
                         {recipe.title}
                     </Heading>
                 </Container>
@@ -39,6 +39,7 @@ const RecipePage = () => {
                     {recipe.notes.length > 0 ? <RecipeNotes items={recipe.notes} /> : null}
                 </VStack>
             </Container>
+            <Box h="50vh" />
         </VStack>
     )
 }
