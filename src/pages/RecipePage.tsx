@@ -34,8 +34,8 @@ const RecipePage = () => {
             </Box>
             <Container maxW="breakpoint-lg" py={{ base: "8", md: "12" }}>
                 <VStack align="stretch" gap="8">
-                    <RecipeList title="Ingredients" items={recipe.ingredients} ordered={false}/>
-                    <RecipeList title="Steps" items={recipe.steps} ordered />
+                    <RecipeList title="Ingredientes" items={recipe.ingredients} ordered={false}/>
+                    <RecipeList title="Instrucciones" items={recipe.steps} ordered />
                     {recipe.notes.length > 0 ? <RecipeNotes items={recipe.notes} /> : null}
                 </VStack>
             </Container>
@@ -55,7 +55,7 @@ const RecipeList = ({ title, items, ordered }: { title: string; items: string[];
         <Stack gap="3">
             <RecipeSectionHeading>{title}</RecipeSectionHeading>
             <List.Root as={listType} gap="2" ps="6">
-                {items.map((item, index) => <List.Item maxW="60ch" key={`${item}-${index}`}>{item}</List.Item>)}
+                {items.map((item, index) => <List.Item maxW="70ch" key={`${item}-${index}`}>{item}</List.Item>)}
             </List.Root>
         </Stack>
     )
@@ -63,8 +63,8 @@ const RecipeList = ({ title, items, ordered }: { title: string; items: string[];
 
 const RecipeNotes = ({ items }: { items: string[] }) => (
     <Stack gap="3">
-        <RecipeSectionHeading>Notes</RecipeSectionHeading>
-        {items.map((item, index) => <Text maxW="60ch" key={`${item}-${index}`}>{item}</Text>)}
+        <RecipeSectionHeading>Notas</RecipeSectionHeading>
+        {items.map((item, index) => <Text maxW="70ch" key={`${item}-${index}`}>{item}</Text>)}
     </Stack>
 )
 
