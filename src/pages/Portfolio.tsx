@@ -19,16 +19,16 @@ import {
 import { FaEnvelope, FaGithub, FaLinkedin } from "react-icons/fa"
 import { Link as RouterLink } from "react-router"
 
-import granitoDeArenaImage from "../../img/granito-de-arena.jpg"
-import mensajesDeEsperanzaImage from "../../img/mensajes-esperanza.jpg"
-import liverpoolQrImage from "../../img/liverpool-qr.jpg"
-import weWantImage from "../../img/we-want.jpg"
-import nautilusWebImage from "../../img/nautilus-web.jpg"
-import scoutingAppImage from "../../img/scouting-app.jpg"
-import geHealthcareImage from "../../img/ge-healthcare.jpg"
-import clubProgramacionImage from "../../img/club-programacion.jpg"
-import ftcProgrammingImage from "../../img/ftc-programming.jpg"
-import laConquistaImage from "../../img/la-conquista.jpg"
+import granitoDeArenaImage from "../assets/portfolio/granito-de-arena.jpg"
+import mensajesDeEsperanzaImage from "../assets/portfolio/mensajes-esperanza.jpg"
+import liverpoolQrImage from "../assets/portfolio/liverpool-qr.jpg"
+import weWantImage from "../assets/portfolio/we-want.jpg"
+import nautilusWebImage from "../assets/portfolio/nautilus-web.jpg"
+import scoutingAppImage from "../assets/portfolio/scouting-app.jpg"
+import geHealthcareImage from "../assets/portfolio/ge-healthcare.jpg"
+import clubProgramacionImage from "../assets/portfolio/club-programacion.jpg"
+import ftcProgrammingImage from "../assets/portfolio/ftc-programming.jpg"
+import laConquistaImage from "../assets/portfolio/la-conquista.jpg"
 
 type Project = {
     id: string
