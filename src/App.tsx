@@ -15,6 +15,8 @@ const RouteTitleManager = () => {
     useEffect(() => {
         if (pathname === "/house")
             document.title = "House"
+        else if (pathname === "/portfolio")
+            document.title = "Diego Montaño — Portfolio"
         else if (pathname.startsWith("/music"))
             document.title = "Music"
         else if (pathname === "/password")
@@ -35,6 +37,7 @@ const App = () => {
             <RouteTitleManager />
             <Routes>
                 <Route path="/" element={ <Portfolio /> }></Route>
+                <Route path="/portfolio" element={ <Portfolio /> } />
                 <Route path="/house" element={ <HousePage /> } />
                 <Route path="/music" element={ <PracticePage song={songs[0]}/> } />
                 <Route path="/password" element={ <PasswordPage /> } />
