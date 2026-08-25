@@ -11,7 +11,7 @@ const PasswordPage = () => {
     const [errorMessage, setErrorMessage] = useState("")
     const [passwords, setPasswords] = useState<string[]>([])
 
-    const handleSubmit = ({}) => {
+    const handleSubmit = () => {
         const NUMERIC_DIGITS = "23456789"
         const UPPERCASE_LETTERS = "ABCDEFGHJKLMNPQRSTUVWXYZ"
         const LOWERCASE_LETTERS = "abcdefghijkmnopqrstuvwxyz"
@@ -51,7 +51,7 @@ const PasswordPage = () => {
         setErrorMessage("")
 
         const generatedPasswords = Array.from({ length: stringCount }, () => {
-            let password = []
+            const password = []
             if (includeNumbers) {
                 password.push(getRandomChar(NUMERIC_DIGITS))
             }

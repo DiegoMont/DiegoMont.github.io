@@ -14,7 +14,6 @@ import {
     SimpleGrid,
     Stack,
     Text,
-    VStack,
 } from "@chakra-ui/react"
 import { FaEnvelope, FaGithub, FaLinkedin } from "react-icons/fa"
 import { Link as RouterLink } from "react-router"
@@ -180,7 +179,7 @@ const Portfolio = () => {
 
                     <Box bg="blue.950" borderWidth="1px" borderColor="blue.800" borderRadius="xl" p={{ base: "8", md: "12" }}>
                         <Stack gap="5">
-                            <SectionHeading eyebrow="Contact">Let's build something useful.</SectionHeading>
+                            <SectionHeading eyebrow="Contact">Let&#39;s build something useful.</SectionHeading>
                             <Text color="gray.300" maxW="60ch">Reach out if you want to talk about software, robotics, or a project that could use a thoughtful technical partner.</Text>
                             <SocialLinks />
                         </Stack>
