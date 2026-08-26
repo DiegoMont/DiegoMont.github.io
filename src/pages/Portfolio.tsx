@@ -15,7 +15,6 @@ import {
     Text,
 } from "@chakra-ui/react"
 import { FaEnvelope, FaGithub, FaLinkedin } from "react-icons/fa"
-import { Link as RouterLink } from "react-router"
 
 import type Project from "../models/Project"
 import projects from "../data/projects"
@@ -113,6 +112,9 @@ function ProfileItem({ title, value }: { title: string; value: string }) {
 }
 
 function Portfolio() {
+    const scrollToProjects = () => {
+        document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })
+    }
 
     return (
         <Box fontFamily="mono">
@@ -126,8 +128,8 @@ function Portfolio() {
                             Computer Science and Technology graduate from Tecnológico de Monterrey, CCM, building useful products across web, mobile, and robotics.
                         </Text>
                         <SocialLinks />
-                        <Button asChild alignSelf="flex-start" colorPalette="blue" variant="solid" size="lg">
-                            <RouterLink to="/portfolio">Explore projects</RouterLink>
+                        <Button onClick={scrollToProjects} alignSelf="flex-start" colorPalette="blue" variant="solid" size="lg">
+                            Explore projects
                         </Button>
                     </Stack>
                 </CenteredContainer>
@@ -135,35 +137,24 @@ function Portfolio() {
 
             <Container maxW="breakpoint-xl" py={{ base: "16", md: "24" }}>
                 <Stack gap={{ base: "12", md: "20" }}>
+
                     <SimpleGrid columns={{ base: 1, md: 2 }} gap="8">
-                        <Box>
-                            <SectionHeading eyebrow="About">A practical, people-centered builder.</SectionHeading>
-                            <Text mt="5" color="gray.300" lineHeight="tall" maxW="60ch">
-                                I enjoy turning complex problems into approachable tools, whether that means a clinical records system, a community platform, or software for competition robots.
-                            </Text>
-                        </Box>
-                        <Stack gap="6" bg="blue.950" borderWidth="1px" borderColor="blue.800" borderRadius="xl" p={{ base: "6", md: "8" }}>
-                            <ProfileItem title="Skills" value="Java, HTML, CSS, PHP, JavaScript, MySQL, Swift, C++" />
-                            <ProfileItem title="Tools" value="Firebase, Git, GitHub, Xcode, Visual Studio Code, Cypress, Arduino" />
+                        <Stack gap="4">
+                            <SectionHeading eyebrow="Education">Master in Applied Artificial Intelligence. 2025</SectionHeading>
+                            <Text color="gray.300" lineHeight="tall">Instituto Tecnológico y de Estudios Superiores de Monterery</Text>
+                            <Heading as="h2" size={{ base: "2xl", md: "3xl" }} fontWeight="medium" color="blue.50">B. S. in Computer Science and Technology. 2022</Heading>
+                            <Text color="gray.300" lineHeight="tall">Instituto Tecnológico y de Estudios Superiores de Monterery, Campus Ciudad de México</Text>
+                            <Text color="gray.300" lineHeight="tall">CENEVAL Excellence Award - EGEL Software Engineering</Text>
                         </Stack>
+
+                        <Stack gap="6" bg="blue.950" borderWidth="1px" borderColor="blue.800" borderRadius="xl" p={{ base: "6", md: "8" }}>
+                            <ProfileItem title="Languages" value="Python, Java, PL/SQL, TypeScript, MySQL, C/C++, PHP" />
+                            <ProfileItem title="Tools" value="PyTorch, Lightning, Oracle, GDAL, Git, Codex, Docker, Firebase, Django, HTML, CSS, Keras" />
+                        </Stack>
+
                     </SimpleGrid>
 
                     <Separator borderColor="whiteAlpha.300" />
-
-                    <SimpleGrid columns={{ base: 1, md: 2 }} gap="8">
-                        <Stack gap="4">
-                            <SectionHeading eyebrow="Education">Computer Science and Technology</SectionHeading>
-                            <Text color="gray.300" lineHeight="tall">B.S. at Tecnológico de Monterrey, 2018–2022.</Text>
-                            <Text color="gray.400" lineHeight="tall">Relevant coursework included interactive design, object-oriented programming, probability and statistics, data structures, advanced databases, network interconnection, software quality and testing, and mobile application development.</Text>
-                        </Stack>
-                        <Stack gap="4">
-                            <SectionHeading eyebrow="Leadership">Activities &amp; community</SectionHeading>
-                            <List.Root gap="3" ps="5" color="gray.300">
-                                <List.Item>Mentor of FRC Robotics Team Nautilus 4010 since 2016.</List.Item>
-                                <List.Item>Programming Club member and ICPC participant since 2019.</List.Item>
-                            </List.Root>
-                        </Stack>
-                    </SimpleGrid>
 
                     <Stack id="projects" gap="8" scrollMarginTop="24">
                         <SectionHeading eyebrow="Selected work">Projects</SectionHeading>
@@ -182,10 +173,10 @@ function Portfolio() {
                 </Stack>
             </Container>
 
-            <Box as="footer" borderTopWidth="1px" borderColor="whiteAlpha.300" py="8">
-                <Container maxW="breakpoint-xl">
-                    <Text color="gray.500" fontSize="sm">&lt;/&gt; with ♥ by DiegoMont</Text>
-                </Container>
+            <Box as="footer" bg="blue.900" borderTopWidth="1px" borderColor="whiteAlpha.300" minH="50vh" py="8">
+                <CenteredContainer>
+                    <Text color="gray.500" fontSize="sm">&lt;/&gt; with ♥ by <Link href="https://github.com/DiegoMont" target="_blank" _hover={{ color: "blue.200" }}>DiegoMont</Link></Text>
+                </CenteredContainer>
             </Box>
         </Box>
     )
