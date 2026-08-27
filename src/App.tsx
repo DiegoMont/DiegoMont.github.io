@@ -2,7 +2,7 @@ import PracticePage from "./pages/PracticePage"
 import PasswordPage from "./pages/PasswordPage"
 
 import songs from "./data/songs"
-import { HashRouter, Route, Routes, useLocation } from "react-router"
+import { HashRouter, Navigate, Route, Routes, useLocation } from "react-router"
 import Portfolio from "./pages/Portfolio"
 import HousePage from "./pages/HousePage"
 import RecipesPage from "./pages/RecipesPage"
@@ -15,6 +15,8 @@ const RouteTitleManager = () => {
     useEffect(() => {
         if (pathname === "/house")
             document.title = "House"
+        else if (pathname === "/portfolio")
+            document.title = "Diego Montaño — Portfolio"
         else if (pathname.startsWith("/music"))
             document.title = "Music"
         else if (pathname === "/password")
@@ -34,7 +36,8 @@ const App = () => {
         <HashRouter basename={import.meta.env.BASE_URL}>
             <RouteTitleManager />
             <Routes>
-                <Route path="/" element={ <Portfolio /> }></Route>
+                <Route path="/" element={ <Navigate to="/portfolio" replace /> } />
+                <Route path="/portfolio" element={ <Portfolio /> } />
                 <Route path="/house" element={ <HousePage /> } />
                 <Route path="/music" element={ <PracticePage song={songs[0]}/> } />
                 <Route path="/password" element={ <PasswordPage /> } />
